@@ -4,9 +4,24 @@
   "description": "Gympass style app. ## RFs - Requisitos Funcionais - O que vai ser possível o usuário fazer no app. - [] Deve ser possível se cadastrar; - [] Deve ser possível se autenticar; - [] Deve ser possível obter um perfil de usuário logado; - [] Deve ser possível obter o número de check-ins realizados pelo usuário logado; - [] Deve ser possível obter o seu histórico de check-ins; - [] Deve ser possível buscar academias próximas; - [] Deve ser possível buscar academias pelo nome; - [] Deve ser possível o usuário realizar check-in em uma academia; - [] Deve ser possível validar o check-in do usuário; - [] Dever ser possível cadastrar uma academia.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start:dev": "tsx watch src/server.ts",
+    "start": "node build/server.js",
+    "start:build": "tsup src --out-dir build"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@rocketseat/eslint-config": "2.2.2",
+    "@types/node": "22.1.0",
+    "eslint": "8.57.0",
+    "tsup": "8.2.4",
+    "tsx": "4.17.0",
+    "typescript": "5.5.4"
+  },
+  "dependencies": {
+    "dotenv": "16.4.5",
+    "fastify": "4.28.1",
+    "zod": "3.23.8"
+  }
 }
