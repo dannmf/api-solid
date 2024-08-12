@@ -1,5 +1,5 @@
 import { prisma } from "@/lib/prisma"
-import { PrismaUsersRepository } from "@/repositories/prisma-user-repository"
+import { UsersRepository } from "@/repositories/prisma/users-repository"
 import { hash } from "bcryptjs"
 import { FastifyReply, FastifyRequest } from "fastify"
 
@@ -10,7 +10,7 @@ interface ResgisterUseCaseRequest {
 }
 
 export class RegisterUseCase {
-  constructor(private usersRepository: any) { }
+  constructor(private usersRepository: UsersRepository) { }
   async execute({ name, email, password }: ResgisterUseCaseRequest) {
     const password_hash = await hash(password, 6)
 
