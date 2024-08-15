@@ -3,10 +3,13 @@
   "version": "1.0.0",
   "description": "Gympass style app. ## RFs - Requisitos Funcionais - O que vai ser possível o usuário fazer no app. - [] Deve ser possível se cadastrar; - [] Deve ser possível se autenticar; - [] Deve ser possível obter um perfil de usuário logado; - [] Deve ser possível obter o número de check-ins realizados pelo usuário logado; - [] Deve ser possível obter o seu histórico de check-ins; - [] Deve ser possível buscar academias próximas; - [] Deve ser possível buscar academias pelo nome; - [] Deve ser possível o usuário realizar check-in em uma academia; - [] Deve ser possível validar o check-in do usuário; - [] Dever ser possível cadastrar uma academia.",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "start:dev": "tsx watch src/server.ts",
     "start": "node build/server.js",
-    "start:build": "tsup src --out-dir build"
+    "start:build": "tsup src --out-dir build",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "keywords": [],
   "author": "",
@@ -19,7 +22,9 @@
     "prisma": "5.18.0",
     "tsup": "8.2.4",
     "tsx": "4.17.0",
-    "typescript": "5.5.4"
+    "typescript": "5.5.4",
+    "vite-tsconfig-paths": "5.0.1",
+    "vitest": "2.0.5"
   },
   "dependencies": {
     "@prisma/client": "5.18.0",
