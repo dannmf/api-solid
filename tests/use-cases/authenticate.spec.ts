@@ -1,52 +1,26 @@
 
-import { InMemoryUsersRepository } from '@/repositories/in-memory/in-memory-users-repository'
-import { AuthenticateUseCase } from '@/use-cases/authenticate'
-import { InvalidCredentialsError } from '@/use-cases/errors/invalid-credentials-error'
-import { RegisterUseCase } from '@/use-cases/register'
-import { hash } from 'bcryptjs'
+import { InMemoryCheckInsRepository } from '@/repositories/in-memory/in-memory-check-ins-repository'
+import { CheckInUseCase } from '@/use-cases/check-in'
 import { expect, describe, it, beforeEach } from 'vitest'
 
-let usersRepository: InMemoryUsersRepository
-let sut: AuthenticateUseCase
+let checkInsRepository: InMemoryCheckInsRepository
+let sut: CheckInUseCase
 
 describe('Authenticate Use Case', () => {
 
     beforeEach(() => {
-        usersRepository = new InMemoryUsersRepository()
-        sut = new AuthenticateUseCase(usersRepository)
+        checkInsRepository = new InMemoryCheckInsRepository()
+        sut = new CheckInUseCase(checkInsRepository)
     })
 
-    it('should be able to authenticate', async () => {
-        await usersRepository.create({
-            name: 'John Doe',
-            email: 'johndoe@example.com',
-            password_hash: await hash('123456', 6)
+    it('should be able to check in', async () => {
+        const { checkIn } = await sut.execute({
+            userId: 'user-id',
+            gymId: 'gym-id'
         })
 
-        const { user } = await sut.execute({
-            email: 'johndoe@example.com',
-            password: '123456'
-        })
-
-        expect(user).toHaveProperty('id')
+        expect(checkIn.id).toEqual(expect.any(String))
     })
-    it('should be able to authenticate with wrong email', async () => {
-        expect(() => sut.execute({
-            email: 'johndoe@example.com',
-            password: '123456'
-        })).rejects.toBeInstanceOf(InvalidCredentialsError)
-    })
-
-    it('should be able to authenticate with wrong password', async () => {    
-        await usersRepository.create({
-            name: 'John Doe',
-            email: 'johndoe@example.com',
-            password_hash: await hash('123456', 6)
-        })
-
-        expect(() => sut.execute({
-            email: 'johndoe@example.com',
-            password: '123123'
-        })).rejects.toBeInstanceOf(InvalidCredentialsError)
-    })
+    
+    
 })
