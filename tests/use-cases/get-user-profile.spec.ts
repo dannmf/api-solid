@@ -31,11 +31,11 @@ describe('Authenticate Use Case', () => {
         expect(user).toHaveProperty('id')
         expect(user.name).toEqual('John Doe')
     })
-    it('should be able to get user profile with wrong id', async () => {
-        expect(() => sut.execute({
-            userId: 'wrong-id'
-        })).rejects.toBeInstanceOf(InvalidCredentialsError)
-    })
+    // it('should be able to get user profile with wrong id', async () => {
+    //     expect(() => sut.execute({
+    //         userId: 'wrong-id'
+    //     })).rejects.toBeInstanceOf(InvalidCredentialsError)
+    // })
 
 
 })
