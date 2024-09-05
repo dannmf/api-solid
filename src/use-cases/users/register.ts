@@ -2,7 +2,7 @@ import { prisma } from "@/lib/prisma"
 import { UsersRepository } from "@/repositories/users-repository"
 import bcrypt from 'bcryptjs';
 import { FastifyReply, FastifyRequest } from "fastify"
-import { UserAlreadyExistsError } from "./errors/user-already-exists-error"
+import { UserAlreadyExistsError } from "../errors/user-already-exists-error"
 import { User } from "@prisma/client"
 
 interface ResgisterUseCaseRequest {
