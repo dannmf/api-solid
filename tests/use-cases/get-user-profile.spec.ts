@@ -1,9 +1,9 @@
 
 import { InMemoryUsersRepository } from '@/repositories/in-memory/in-memory-users-repository'
-import { AuthenticateUseCase } from '@/use-cases/authenticate'
+import { AuthenticateUseCase } from '@/use-cases/users/authenticate'
 import { InvalidCredentialsError } from '@/use-cases/errors/invalid-credentials-error'
-import { GetUserProfileUseCase } from '@/use-cases/get-user-profile'
-import { RegisterUseCase } from '@/use-cases/register'
+import { GetUserProfileUseCase } from '@/use-cases/users/get-user-profile'
+import { RegisterUseCase } from '@/use-cases/users/register'
 import { hash } from 'bcryptjs'
 import { expect, describe, it, beforeEach } from 'vitest'
 
